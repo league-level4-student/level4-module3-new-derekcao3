@@ -1,9 +1,20 @@
 package _00_Intro_to_Linked_Lists;
 
-public class LinkedListDemo {
+public class LinkedListDemo<T> {
 
     public static void main(String[] args) {
-
+    	  LinkedList<Integer> list=new LinkedList<Integer>();
+    	     list.add(3);
+    	     list.add(2);
+    	     list.add(5);
+    	     Node<Integer> head = list.getHead();
+    	     
+    	     while(head!=null) {
+    	    	 head.setValue(head.getValue()*2);
+    	    	 head=head.getNext();
+    	     }
+    	     list.print();
+         }
         /*
          * A LinkedList is a linear data structure, but unlike an ArrayList or
          * Array the data is not stored in contiguous memory locations.
@@ -34,4 +45,5 @@ public class LinkedListDemo {
 
     }
 
-}
+
+
