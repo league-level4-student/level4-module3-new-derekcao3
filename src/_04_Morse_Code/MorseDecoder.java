@@ -1,5 +1,8 @@
 package _04_Morse_Code;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import _03_Intro_to_Binary_Trees.BinaryTree;
 
 public class MorseDecoder {
@@ -64,7 +67,19 @@ public class MorseDecoder {
      * 
      */
     void decode() {
-
+    	ArrayList<String> list = new ArrayList<>();
+    	Scanner scanner = new Scanner(System.in);
+    	System.out.println("Enter something in morse code");
+    	String word = scanner.next();
+    	for (int i = 0; i < word.length(); i++) {
+			if(word.charAt(i)==' ') {
+				list.add(word.substring(0,i));
+				word.substring(i,word.length());
+			}
+		}
+    	for (int i = 0; i < list.size(); i++) {
+			
+		}
     }
 
 }

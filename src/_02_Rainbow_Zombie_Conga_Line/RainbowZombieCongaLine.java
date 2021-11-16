@@ -33,17 +33,21 @@ public class RainbowZombieCongaLine {
 
     // Make the passed in zombie the first Zombie in the conga line!
     public void engine(Zombie dancer) {
-
+    	congaLine.getHead().setValue(dancer);
     }
 
     // Make the passed in zombie the last Zombie in the conga line!
     public void caboose(Zombie dancer) {
-
+    	congaLine.getTail().setValue(dancer);
     }
 
     // Place the zombie at the designated position in the conga line!
     public void jumpInTheLine(Zombie dancer, int position) {
-
+    	Node<Zombie> node= congaLine.getHead();
+    	for (int i = 0; i < position; i++) {
+			node = node.getNext();
+		}
+    	node.setValue(dancer);
     }
 
     /*
@@ -51,7 +55,13 @@ public class RainbowZombieCongaLine {
      * the conga line!
      */
     public void everyoneOut(Zombie dancer) {
-
+    	Node<Zombie> node= congaLine.getHead();
+    for (int i = 0; i < congaLine.size(); i++) {
+		if(node.getValue().getZombieHatColor().equals(dancer.getZombieHatColor())) {
+			congaLine.remove(i); 
+		}
+		node = node.getNext();
+	}
     }
 
     /*
@@ -59,7 +69,14 @@ public class RainbowZombieCongaLine {
      * from the conga line!
      */
     public void youAreDone(Zombie dancer) {
-
+       	Node<Zombie> node= congaLine.getHead();
+        for (int i = 0; i < congaLine.size(); i++) {
+    		if(node.getValue().getZombieHatColor().equals(dancer.getZombieHatColor())) {
+    			congaLine.remove(i); 
+    			break;
+    		}
+    		node = node.getNext();
+    	}
     }
 
     /*
@@ -67,7 +84,14 @@ public class RainbowZombieCongaLine {
      * add one to the front, one to the end and one in the middle.
      */
     public void brains(Zombie dancer) {
-
+    	Zombie zombie1 = new Zombie(dancer.getZombieHatColor());
+    	Zombie zombie2 = new Zombie(dancer.getZombieHatColor());
+    	congaLine.getHead().setValue(zombie1);
+    	Node<Zombie> node= congaLine.getHead();
+        for (int i = 0; i < congaLine.size()/2; i++) {
+    		node = node.getNext();
+    	}
+        node.getNext().setValue(zombie2);
     }
 
     /*
@@ -75,7 +99,21 @@ public class RainbowZombieCongaLine {
      * color to the end of the line.
      */
     public void rainbowBrains(Zombie dancer) {
-
+    	Zombie zombie1 = new Zombie(ZombieHatColor.R);
+    	Zombie zombie2 = new Zombie(ZombieHatColor.O);
+    	Zombie zombie3 = new Zombie(ZombieHatColor.Y);
+    	Zombie zombie4 = new Zombie(ZombieHatColor.G);
+    	Zombie zombie5 = new Zombie(ZombieHatColor.B);
+    	Zombie zombie6 = new Zombie(ZombieHatColor.I);
+    	Zombie zombie7 = new Zombie(ZombieHatColor.V);
+    	congaLine.add(dancer);
+    	congaLine.add(zombie1);
+    	congaLine.add(zombie2);
+    	congaLine.add(zombie3);
+    	congaLine.add(zombie4);
+    	congaLine.add(zombie5);
+    	congaLine.add(zombie6);
+    	congaLine.add(zombie7);
     }
 
     public LinkedList<Zombie> getCongaLine() {
